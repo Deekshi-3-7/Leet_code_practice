@@ -42,3 +42,37 @@ Constraints:
 s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 """
+
+
+def roman_to_int(roman_characters):
+    roman_values = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    }
+    total = 0
+    for i in range(len(roman_characters) - 1):
+        if roman_values[roman_characters[i]] < roman_values[roman_characters[i + 1]]:
+            total -= roman_values[roman_characters[i]]
+        else:
+            total += roman_values[roman_characters[i]]
+    return total + roman_values[roman_characters[-1]]
+
+    # roman_characters = roman_characters.replace('IV', 'IIII')
+    # roman_characters = roman_characters.replace('IX', 'VIIII')
+    # roman_characters = roman_characters.replace('XL', 'XXXX')
+    # roman_characters = roman_characters.replace('XC', 'LXXXX')
+    # roman_characters = roman_characters.replace('CD', 'CCCC')
+    # roman_characters = roman_characters.replace('CM', 'DCCCC')
+    #
+    # for char in roman_characters:
+    #     total += roman_values[char]
+    # return total
+
+
+result = roman_to_int('MCMXCIV')
+print(result)
