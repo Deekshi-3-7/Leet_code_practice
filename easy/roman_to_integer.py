@@ -54,13 +54,13 @@ def roman_to_int(roman_characters):
         'D': 500,
         'M': 1000
     }
-    total = 0
-    for i in range(len(roman_characters) - 1):
-        if roman_values[roman_characters[i]] < roman_values[roman_characters[i + 1]]:
-            total -= roman_values[roman_characters[i]]
-        else:
-            total += roman_values[roman_characters[i]]
-    return total + roman_values[roman_characters[-1]]
+    # total = 0
+    # for i in range(len(roman_characters) - 1):
+    #     if roman_values[roman_characters[i]] < roman_values[roman_characters[i + 1]]:
+    #         total -= roman_values[roman_characters[i]]
+    #     else:
+    #         total += roman_values[roman_characters[i]]
+    # return total + roman_values[roman_characters[-1]]
 
     # roman_characters = roman_characters.replace('IV', 'IIII')
     # roman_characters = roman_characters.replace('IX', 'VIIII')
@@ -72,6 +72,18 @@ def roman_to_int(roman_characters):
     # for char in roman_characters:
     #     total += roman_values[char]
     # return total
+
+    total = 0
+    prev_value = 0
+    for char in reversed(roman_characters):
+
+        curr_value = roman_values[char]
+        if curr_value < prev_value:
+            total -= curr_value
+        else:
+            total += curr_value
+        prev_value = curr_value
+    return total
 
 
 result = roman_to_int('MCMXCIV')
