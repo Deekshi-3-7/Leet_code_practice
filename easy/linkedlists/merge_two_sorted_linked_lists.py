@@ -27,6 +27,8 @@ Both list1 and list2 are sorted in non-decreasing order.
 
 """
 
+from basic_linked_list import list_to_linked_list
+
 
 class LinkedList:
 
@@ -89,7 +91,16 @@ llist2 = node6
 #     llist2 = llist2.next_node
 
 print()
-merged_node = merge_two_linked_lists(llist1, llist2)
+# merged_node = merge_two_linked_lists(llist1, llist2)
+# while merged_node:
+#     print(merged_node.val, end=" -> " if merged_node.next_node else "\n")
+#     merged_node = merged_node.next_node
+
+"""input from list"""
+list_1 = [1, 3, 5, 7, 9]
+list_2 = [2, 4, 6, 8]
+merged_node = merge_two_linked_lists(list_to_linked_list(list_1), list_to_linked_list(list_2))
+print("Merged linked list")
 while merged_node:
     print(merged_node.val, end=" -> " if merged_node.next_node else "\n")
     merged_node = merged_node.next_node
